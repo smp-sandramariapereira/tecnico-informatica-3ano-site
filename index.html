@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Laboratório de Empreendedorismo Tecnológico</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;600&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #00140d;
+      --panel: #001f14;
+      --text: #33ff99;
+      --muted: #26cc88;
+      --border: #1f6f52;
+      --accent: #66ffcc;
+
+      --plain-bg: #f6f5f1;
+      --plain-panel: #ffffff;
+      --plain-text: #1e1e1e;
+      --plain-muted: #555;
+      --plain-border: #cfcfcf;
+      --plain-accent: #2a2a2a;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'IBM Plex Mono', monospace;
+      line-height: 1.65;
+      text-shadow: 0 0 3px rgba(51, 255, 153, 0.35);
+    }
+
+    body::before {
+      content: "";
+      position: fixed;
+      inset: 0;
+      pointer-events: none;
+      background: repeating-linear-gradient(
+        to bottom,
+        rgba(0,0,0,0.06),
+        rgba(0,0,0,0.06) 1px,
+        rgba(0,0,0,0) 2px,
+        rgba(0,0,0,0) 4px
+      );
+      opacity: 0.25;
+      z-index: 1;
+    }
+
+    .container {
+      max-width: 920px;
+      margin: 0 auto;
+      padding: 48px 24px;
+      position: relative;
+      z-index: 2;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      border-bottom: 2px solid var(--border);
+      padding-bottom: 24px;
+      margin-bottom: 48px;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+
+    h1 {
+      font-size: 2.2rem;
+      margin: 0;
+      letter-spacing: 1px;
+    }
+
+    h1::after {
+      content: "█";
+      margin-left: 8px;
+      color: var(--accent);
+      animation: blink 1s steps(1, end) infinite;
+    }
+
+    @keyframes blink { 50% { opacity: 0; } }
+
+    .subtitle {
+      margin-top: 6px;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    .controls {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .controls button {
+      background: var(--panel);
+      color: var(--text);
+      border: 1px solid var(--border);
+      padding: 8px 14px;
+      font-family: inherit;
+      font-size: 0.8rem;
+      text-transform: uppercase;
+      cursor: pointer;
+    }
+
+    .controls button[aria-pressed="true"],
+    .controls button.mode-active {
+      border: 2px solid var(--accent);
+      color: var(--accent);
+    }
+
+    h2 {
+      margin-top: 56px;
+      font-size: 1.4rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 6px;
+      letter-spacing: 1px;
+    }
+
+    ul { padding-left: 20px; }
+    li { margin-bottom: 8px; }
+
+    .box {
+      background: var(--panel);
+      border: 1px solid var(--border);
+      padding: 20px 24px;
+      margin: 32px 0;
+    }
+
+    footer {
+      margin-top: 72px;
+      padding-top: 24px;
+      border-top: 2px solid var(--border);
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+
+    [data-lang] { display: none; }
+    [data-lang].active { display: block; }
+
+    body.plain {
+      background: var(--plain-bg);
+      color: var(--plain-text);
+      text-shadow: none;
+    }
+
+    body.plain::before { display: none; }
+    body.plain header,
+    body.plain h2,
+    body.plain footer {
+      border-color: var(--plain-border);
+    }
+
+    body.plain .box,
+    body.plain .controls button {
+      background: var(--plain-panel);
+      border-color: var(--plain-border);
+      color: var(--plain-text);
+    }
+
+    body.plain h1::after { color: var(--plain-accent); }
+  </style>
+</head>
+
+<body>
+<div class="container">
+
+<header>
+  <div>
+    <h1>LABORATÓRIO</h1>
+
+    <div class="subtitle" data-lang="pt">
+      Empreendedorismo Tecnológico e Tecnologias Emergentes Aplicadas<br>
+      Educação pública, equidade e gestão responsável da inovação
+    </div>
+
+    <div class="subtitle" data-lang="en">
+      Technological Entrepreneurship and Applied Emerging Technologies<br>
+      Public education, equity, and responsible innovation management
+    </div>
+  </div>
+
+  <div class="controls">
+    <button id="btn-pt" aria-pressed="true">PT</button>
+    <button id="btn-en" aria-pressed="false">EN</button>
+    <button id="btn-mode" class="mode-active">PLAIN</button>
+  </div>
+</header>
+
+<!-- PT -->
+<main data-lang="pt" class="active">
+
+<p>
+Este laboratório é uma iniciativa educacional coordenada a partir da
+<strong>prática docente na escola pública</strong>, voltada a estudantes do
+<strong>3º ano do Curso Técnico em Informática</strong>.
+</p>
+
+<p>
+O projeto atua na articulação entre
+<strong>formação técnica</strong>,
+<strong>empreendedorismo</strong> e
+<strong>tecnologias emergentes</strong>,
+com ênfase em <strong>Inteligência Artificial</strong> e
+<strong>Web3</strong>, de forma ética, pedagógica e institucionalmente responsável.
+</p>
+
+<h2>Princípio central</h2>
+
+<div class="box">
+A inovação tecnológica só faz sentido quando
+<strong>reduz desigualdades</strong>,
+<strong>valoriza o trabalho docente</strong> e
+<strong>amplia oportunidades reais</strong>
+para estudantes da escola pública.
+</div>
+
+<h2>Equidade e educação pública</h2>
+
+<ul>
+  <li>Equidade como prática intencional, não como discurso</li>
+  <li>Acesso qualificado a ambientes de inovação</li>
+  <li>Redução de barreiras territoriais e sociais</li>
+  <li>Proteção do interesse público</li>
+</ul>
+
+<h2>Tecnologias emergentes no projeto</h2>
+
+<ul>
+  <li><strong>Inteligência Artificial</strong> como ferramenta de aprendizagem, automação e análise</li>
+  <li><strong>Web3</strong> como base conceitual para registro, autoria e governança educacional</li>
+  <li>Uso não especulativo, não comercial e supervisionado</li>
+  <li>Tecnologia como meio pedagógico, não como fim</li>
+</ul>
+
+<h2>O papel do professor</h2>
+
+<div class="box">
+O professor é o mediador central da inovação.<br>
+A tecnologia entra para apoiar o processo educativo,
+não para substituí-lo.
+</div>
+
+<h2>Governança e ética</h2>
+
+<ul>
+  <li>Autonomia pedagógica da escola pública</li>
+  <li>Neutralidade tecnológica</li>
+  <li>Proteção de dados e direitos dos estudantes</li>
+  <li>Transparência e prestação de contas</li>
+</ul>
+
+</main>
+
+<!-- EN -->
+<main data-lang="en">
+
+<p>
+This laboratory is an educational initiative coordinated from
+<strong>public school teaching practice</strong>,
+aimed at students in the
+<strong>3rd year of the Technical Course in Information Technology</strong>.
+</p>
+
+<p>
+The project articulates
+<strong>technical education</strong>,
+<strong>entrepreneurship</strong>, and
+<strong>emerging technologies</strong>,
+with emphasis on <strong>Artificial Intelligence</strong> and
+<strong>Web3</strong>, in an ethical, pedagogical, and institutionally responsible way.
+</p>
+
+<h2>Core principle</h2>
+
+<div class="box">
+Technological innovation only makes sense when it
+<strong>reduces inequalities</strong>,
+<strong>values teaching practice</strong>, and
+<strong>creates real opportunities</strong>
+for public school students.
+</div>
+
+<h2>Equity and public education</h2>
+
+<ul>
+  <li>Equity as intentional practice</li>
+  <li>Qualified access to innovation environments</li>
+  <li>Reduction of territorial and social barriers</li>
+  <li>Protection of the public interest</li>
+</ul>
+
+<h2>Emerging technologies in the project</h2>
+
+<ul>
+  <li><strong>Artificial Intelligence</strong> as a learning, automation, and analysis tool</li>
+  <li><strong>Web3</strong> as a conceptual basis for educational governance and authorship</li>
+  <li>Non-speculative, non-commercial use</li>
+  <li>Technology as a pedagogical means, not an end</li>
+</ul>
+
+<h2>The role of the teacher</h2>
+
+<div class="box">
+Teachers are the central mediators of innovation.<br>
+Technology supports education — it does not replace it.
+</div>
+
+<h2>Governance and ethics</h2>
+
+<ul>
+  <li>Pedagogical autonomy of public schools</li>
+  <li>Technological neutrality</li>
+  <li>Data protection and student rights</li>
+  <li>Transparency and accountability</li>
+</ul>
+
+</main>
+
+<footer>
+Laboratório de Empreendedorismo Tecnológico<br>
+Educação pública, equidade e inovação com responsabilidade
+</footer>
+
+</div>
+
+<script>
+const btnPT = document.getElementById('btn-pt');
+const btnEN = document.getElementById('btn-en');
+const btnMode = document.getElementById('btn-mode');
+const blocks = document.querySelectorAll('[data-lang]');
+
+function setLang(lang) {
+  blocks.forEach(el => {
+    el.classList.toggle('active', el.getAttribute('data-lang') === lang);
+  });
+  btnPT.setAttribute('aria-pressed', lang === 'pt');
+  btnEN.setAttribute('aria-pressed', lang === 'en');
+  document.documentElement.lang = lang === 'pt' ? 'pt-BR' : 'en';
+  localStorage.setItem('lab_lang', lang);
+}
+
+btnPT.onclick = () => setLang('pt');
+btnEN.onclick = () => setLang('en');
+setLang(localStorage.getItem('lab_lang') || 'pt');
+
+function setMode(mode) {
+  document.body.classList.toggle('plain', mode === 'plain');
+  btnMode.textContent = mode === 'plain' ? 'TERMINAL' : 'PLAIN';
+  localStorage.setItem('lab_mode', mode);
+}
+
+btnMode.onclick = () => {
+  const current = localStorage.getItem('lab_mode') || 'terminal';
+  setMode(current === 'plain' ? 'terminal' : 'plain');
+};
+
+setMode(localStorage.getItem('lab_mode') || 'terminal');
+</script>
+
+</body>
+</html>
